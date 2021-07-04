@@ -14,7 +14,7 @@ environement = ["mmmmmmmmmm",
 				"m00000000m",
 				"m00000000m",
 				"m00000000m",
-				"m00000000m",
+				"m0000m000m",
 				"m00000000m",
 				"m00000000m",
 				"m00000000m",
@@ -26,15 +26,16 @@ environement = ["mmmmmmmmmm",
 
 import tkinter as tk
 
-# first window with black background
+# Initialise a window with black background
 window = tk.Tk()
 
-# Drawing a wall
-# Make colored squares to build the wall
+# Make colored squares to build environement
 canvas = tk.Canvas()
-canvas.configure(bg='black')
-for i in range(10):
-	canvas.create_rectangle(i*10,0,(i+1)*10,10, fill="red")
+canvas.configure(bg='black', width=99, height=99)
+for i, row in enumerate(environement):
+	for j, v in enumerate(row):
+		if v == "m":
+			canvas.create_rectangle(i*10+1,j*10+1,(i+1)*10+1,(j+1)*10+1, fill="red")
 canvas.pack()
 
 window.mainloop() # Event loop (wait for user action) necessary for a script to show window
