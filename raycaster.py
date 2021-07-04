@@ -20,6 +20,19 @@ environement = ["mmmmmmmmmm",
 				"m00000000m",
 				"mmmmmmmmmm",]
 
+# We also need a player
+# let's make a class for it
+class Player:
+	"""Player's characteristics
+	The player has a position and a method to change position"""
+	def __init__(self):
+		self.x = 4
+		self.y = 4
+
+	def move(self, dx, dy):
+		self.x = self.x + dx
+		self.y = self.y + dy
+
 # ok now let's show graphicaly a map of our environement
 # We need a graphical library
 # let's try tkinter (the most used/famous one perhaps)
