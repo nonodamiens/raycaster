@@ -6,19 +6,19 @@ print("Hello my little program")
 
 # First we need a environement
 # let's try with a list
-# m for wall, p for player and 0 for empty
+# 1 for wall and 0 for empty
 # map size 10x10
 
-environement = ["mmmmmmmmmm",
-				"m00000000m",
-				"m00000000m",
-				"m00000000m",
-				"m00000000m",
-				"m0000m000m",
-				"m00000000m",
-				"m000p0000m",
-				"m00000000m",
-				"mmmmmmmmmm",]
+environement = ["1111111111",
+				"1001000001",
+				"1001000001",
+				"1000000001",
+				"1000001001",
+				"1000000001",
+				"1000000001",
+				"1000000001",
+				"1000000001",
+				"1111111111",]
 
 # We also need a player
 # let's make a class for it
@@ -26,8 +26,8 @@ class Player:
 	"""Player's characteristics
 	The player has a position and a method to change position"""
 	def __init__(self):
-		self.x = 4
-		self.y = 4
+		self.x = 50
+		self.y = 50
 
 	def move(self, dx, dy):
 		self.x = self.x + dx
@@ -44,15 +44,15 @@ window = tk.Tk()
 
 # Make colored squares to build environement
 canvas = tk.Canvas()
-canvas.configure(bg='black', width=99, height=99)
+canvas.configure(bg='black', width=200, height=200)
 for i, row in enumerate(environement):
 	for j, v in enumerate(row):
-		print("coordinates :", i, j, v)
-		if v == "m":
-			canvas.create_rectangle(j*10+1,i*10+1,(j+1)*10+1,(i+1)*10+1, fill="red")
-		if v == "p":
-			canvas.create_oval(j*10+1,i*10+1,(j+1)*10+1,(i+1)*10+1, fill="white")
-			canvas.create_line(j*10+6,i*10+1,j*10+6,(i+1)*10+1, fill="blue")
+		# print("coordinates :", i, j, v)
+		if int(v):
+			canvas.create_rectangle(j*20+1,i*20+1,(j+1)*20+1,(i+1)*20+1, fill="red")
+		# if v == "p":
+		# 	canvas.create_oval(j*10+1,i*10+1,(j+1)*10+1,(i+1)*10+1, fill="white")
+		# 	canvas.create_line(j*10+6,i*10+1,j*10+6,(i+1)*10+1, fill="blue")
 
 canvas.pack()
 
