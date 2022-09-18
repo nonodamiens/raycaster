@@ -18,7 +18,7 @@ environement = ["1111111111",
 				"1000000001",
 				"1111111111",]
 
-from math import pi # needed for angle calculus
+from math import pi, cos, sin # needed for angle calculus
 
 # We also need a player
 # let's make a class for it
@@ -30,9 +30,10 @@ class Player:
 		self.y = 100
 		self.d = 3 * pi / 2 # equivalent to 270° direction up
 
-	# def move(self, dx, dy):
-	# 	self.x = self.x + dx
-	# 	self.y = self.y + dy
+	def move_left(self, e):
+		self.x += cos(self.d+pi/2)
+		self.y += sin(self.d+pi/2)
+		canvas.coord(e, (self.x-3, self.y-3), (self.x+3, self.y+3))
 
 # ok now let's show graphicaly a map of our environement
 # We need a graphical library
@@ -53,8 +54,10 @@ for i, row in enumerate(environement):
 
 # Add a player to the scene
 p1 = Player() # init player
-canvas.create_oval((p1.x-3, p1.y-3), (p1.x+3, p1.y+3), fill="yellow")
+p1_dot = canvas.create_oval((p1.x-3, p1.y-3), (p1.x+3, p1.y+3), fill="yellow")
+p1_dir = canvas.create_line((p1.x, p1.y), (p1.x+cos(p1.d)*20, p1.y+sin(p1.d)*20), fill="yellow")
 
+p1_dot.bind("<left>", p1.move_left())
 
 canvas.pack()
 
