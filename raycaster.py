@@ -2,8 +2,6 @@
 ### Made by me ###
 ### First step : Experimentation ! ###
 
-print("Hello my little program")
-
 # First we need a environement
 # let's try with a list
 # 1 for wall and 0 for empty
